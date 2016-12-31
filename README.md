@@ -5,6 +5,8 @@ repo should help things go more smoothly.
 First make your local OpenFOAM directory and clone this repository:
 
 mkdir $HOME/OpenFOAM
+
 cd $HOME/OpenFOAM
+
 clone //https://github.com/tonyladd/install
 
