@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install sources'
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo OpenFOAM source in: $WM_PROJECT_DIR
+
+# Copy scripts to install tools
+cp getGcc getBinutils makeBinutils getCmake $WM_THIRD_PARTY_DIR
+cp getBoost getCGAL getMPI getQt makeQt $WM_THIRD_PARTY_DIR
+
+# Get tools
+cd $WM_THIRD_PARTY_DIR
+./getGcc gmp-$GMPVER mpfr-$MPFRVER mpc-$MPCVER gcc-$GCCVER
+./getBinutils binutils-$BINUTILSVER
+./getCmake cmake-$CMAKEVER
+./getBoost boost_$BOOSTVER
+./getCGAL CGAL-$CGALVER
+./getMPI openmpi-$MPIVER
+./getQt $QTVER
+chown -R root gcc-* gmp-* mpc-* mpfr-* binutils-* cmake-*
+chown -R root boost_* CGAL* qt-* openmpi-*
+chgrp -R root gcc-* gmp-* mpc-* mpfr-* binutils-* cmake-*
+chgrp -R root boost_* CGAL* qt-* openmpi-*
+chmod 755 gcc-* gmp-* mpc-* mpfr-* binutils-* cmake-*
+chmod 755 boost_* CGAL* qt-* openmpi-*
+
+echo 'Sources Installed'
+echo '------------------------'

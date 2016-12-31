@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install gcc with system compiler'
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo ThirdParty sources in: $WM_THIRD_PARTY_DIR
+echo Compiler settings: $FOAM_SETTINGS
+cd $WM_THIRD_PARTY_DIR
+
+#Compile gcc
+echo "Before GCC/Binutils: gcc is " `which gcc`
+GCCTOOLS="gmp-$GMPVER mpfr-$MPFRVER mpc-$MPCVER gcc-$GCCVER"
+BINTOOLS="binutils-$BINUTILSVER gcc-$GCCVER"
+echo "Compiling gcc-$GCCVER"
+./makeGcc -no-multilib $GCCTOOLS > makeGcc.log 2>&1
+echo "Compiling binutils-$BINUTILSVER"
+./makeBinutils $BINTOOLS > makeBinutils.log 2>&1
+

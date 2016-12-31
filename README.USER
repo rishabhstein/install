@@ -1,0 +1,27 @@
+To set up the user directory in the standard OpenFOAM way:
+
+Edit your .bashrc to include the following:
+
+# Set aliases for OpenFOAM environments
+OFVER=4.x
+FOAM=/global/usr/apps/OF4
+export FOAM_INST_DIR=$FOAM
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc
+
+
+mkdir -p $HOME/OpenFOAM/$USER-$OFVER
+mkdir -p $HOME/.OpenFOAM-$OFVER
+
+
+mv the install directory to $HOME/OpenFOAM
+cp controlDict from the OpenFOAM-version/etc to $HOME/.OpenFOAM-$OFVER
+cp prefs.sh from this directory to $HOME/.OpenFOAM-$OFVER
+
+
+Notes:
+1) FOAM points to the OpenFOAM installation directory
+2) OFVER is the OpenFOAM version
+3) The gcc version in prefs.sh must match the one used to compile
+OpenFOAM
+
+

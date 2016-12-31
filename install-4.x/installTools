@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install Tool chain'
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETOF
+echo ThirdParty sources in: $WM_THIRD_PARTY_DIR
+echo Compiler settings: $FOAM_SETTINGS
+cd $WM_THIRD_PARTY_DIR
+
+# Compile cmake
+echo "Compiling cmake-$CMAKEVER"
+./makeCmake cmake-$CMAKEVER > makeCmake.log 2>&1
+        
+# Reset environment to pick up cmake version
+source $WM_PROJECT_DIR/etc/bashrc $SETOF
+echo "Settings for ThirdParty gcc: $FOAM_SETTINGS"
+
+# Compile CGAL
+echo "Compiling CGAL-$CGALVER with boost_$BOOSTVER"
+./makeCGAL > makeCGAL.log 2>&1
+
+# Compile qt
+echo "Compiling qt-$QTVER"
+./makeQt qt-$QTVER > makeQt.log 2>&1
+
+# Compile parallel tools
+echo "Compiling MPI and Scotch"
+echo "Add path to current autoconf"
+export PATH=/global/usr/bin:$PATH
+./Allwmake > makeMPI.log 2>&1
+
+echo "Tools installed"
+echo '------------------------'
+

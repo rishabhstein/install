@@ -1,0 +1,48 @@
+#!/bin/bash
+# OpenFOAM configuration script
+
+# OpenFOAM and patch directories
+FOAM=OF4                                        # Installation dir
+INST=/global/usr/apps                           # Location
+PATCH=patches-OpenFOAM-4.x-unofficial           # Patch directory
+
+# Set OpenFOAM environment variables
+export OFCC=ThirdParty
+export OFGCC=Gcc53
+export OFPROCS=4
+export OFMPI=OPENMPI
+export OFDBG=Opt
+
+# Set software versions
+export OFVER=4.x
+export QTVER=4.8.6
+export MPIVER=1.10.2
+export GCCVER=5.3.0
+export GMPVER=5.1.2
+export MPCVER=1.0.1
+export MPFRVER=3.1.2
+export CGALVER=4.8.1
+export BOOSTVER=1_58_0
+export CMAKEVER=3.3.2
+export BINUTILSVER=2.25
+
+# Set other directories
+export FOAM_INST_DIR=$INST/$FOAM
+export PATCHDIR=$FOAM_INST_DIR/$PATCH
+
+# Unset existing OpenFOAM configuration
+if [ ! -z "$WM_PROJECT_DIR" ]; then
+echo Unsetting existing configuration
+. $WM_PROJECT_DIR/etc/config/unset.sh > /dev/null 2>&1
+fi
+
+# Unset other paths
+unset LIBRARY_PATH LD_LIBRARY_PATH CPATH NLSPATH
+unset C_INCLUDE_PATH CPLUS_INCLUDE_PATH INCLUDE
+
+# Export compiler setting
+MPI="WM_MPLIB=OPENMPI WM_NCOMPPROCS=$OFPROCS"
+export SETTP="WM_COMPILER_TYPE=system WM_COMPILER=Gcc $MPI"
+export SETOF="WM_COMPILER_TYPE=ThirdParty WM_COMPILER=$OFGCC $MPI"
+echo "Installation in: " $FOAM_INST_DIR
+

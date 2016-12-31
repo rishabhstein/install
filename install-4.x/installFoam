@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Compile OpenFOAM'
+
+# Set OpenFOAM environment
+if [ $OFMPI == SYSTEMOPENMPI ]; then
+    module load openmpi-x86_64
+    export PATH=$PATH:/usr/lib64/openmpi/bin
+fi
+
+# Source OpenFOAM environment
+if [ "$OFDBG" == "Debug" ]; then
+    SETOF="$SETOF WM_COMPILE_OPTION=Debug"
+fi
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETOF
+echo OpenFOAM source in: $WM_PROJECT_DIR
+echo Compiler settings: $FOAM_SETTINGS
+
+# Installation
+cd $WM_PROJECT_DIR
+./Allwmake > wmake.log 2>&1
+./Allwmake > wmake.log2 2>&1                # Installation summary
+
+echo 'OpenFOAM installed'
+echo '------------------------'

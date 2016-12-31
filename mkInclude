@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir -p lnInclude
+cd lnInclude
+for H in ../libs/*/*.H; do
+    ln -s $H
+done

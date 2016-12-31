@@ -1,0 +1,22 @@
+To install the solvers and auxiliary files, follow the steps outlined in
+the following README files:
+
+1) System preparation (README.PREP)
+2) OpenFOAM installation (README.OF)
+3) User setup (README.USER)
+4) Libraries (README.LIB)
+5) Solvers (README.SOL)
+
+These instructions will create a global installation of OpenFOAM
+(as root) and the local directory $HOME/OpenFOAM/$USER-$OFVER
+The local directory contains applications (with subdirectories
+libraries and solvers) and the run directory where cases are executed
+
+Note:
+1) We use yum-based linux systems and the installation is known to work
+on CentOS (v5/v6) and Scientific Linux (v7).
+2) However, this is the first version of this document and not all the
+steps have been verified at this point. Please let me know if you have
+problems
+email: tladd@che.ufl.edu
+

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+version=$1
+major=${version:0:3}
+packageDir=qt-everywhere-opensource-src-${version}
+tarFile=$packageDir.tar.gz
+url="http://download.qt-project.org/archive/qt/$major/$version/$tarFile"
+. etc/tools/ThirdPartyFunctions
+
+# get tar.gz file if required
+if [ ! -d ${packageDir} ]; then
+    downloadFile $tarFile $url
+
+    if [ -e download/$tarFile ]; then
+        echo "unpack download/$tarFile"
+        tar -xzf download/$tarFile
+    else
+        echo "no download/$tarFile to unpack"
+    fi
+
+fi
+

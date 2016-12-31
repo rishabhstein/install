@@ -1,0 +1,43 @@
+#!/bin/bash
+# OpenFOAM installation script
+
+source ./setConfig                          # Set configuration
+source ./setConfig                          # Make sure its set
+
+# Prompt to replace existing source
+echo "Replace existing $OFVER? (no)"
+read reply
+if [ "$reply" == "yes" ]; then
+    getOF
+fi
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo OpenFOAM source in: $WM_PROJECT_DIR
+echo Compiler settings: $FOAM_SETTINGS
+
+# Installation
+while true; do
+    echo '1) Install Source tree'
+    echo '2) Patch source files (release dependent)'
+    echo '3) Install compiler (gcc+binutils)'
+    echo '4) Install tool chain (cmake CGAL+boost Qt MPI scotch)'
+    echo '5) Install ParaView'
+    echo '6) Install OpenFOAM'
+    echo 'A) Install everything (steps 3-6)'
+    echo 'X to exit or enter a number'
+    read reply
+    case $reply in
+        1) ./installSource;;                # Install sources
+        2) ./installPatch;;                 # Patch source files
+        3) ./installGcc;;                   # Compile gcc
+        4) ./installTools;;                 # Compile tool chain
+        5) ./installPView;;                 # Compile ParaView
+        6) ./installFoam;;                  # Compile OpenFOAM
+        A) ./installAll;;                   # Install everything
+        X) break;;
+        *) ;;
+    esac
+done
+echo "All Done"
+exit 0

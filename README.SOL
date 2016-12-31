@@ -1,0 +1,27 @@
+To set up the solvers directory:
+
+cd $HOME/OpenFOAM/$USER-$OFVER/applications/solvers
+mkdir solvers
+cd solvers
+cp -rp $HOME/OpenFOAM/install/Allw* solvers
+
+
+clone //https://github.com/tonyladd/porousFoam
+clone //https://github.com/tonyladd/fractureFoam
+Allwmake
+
+
+run
+clone //https://github.com/tonyladd/porousCases
+clone //https://github.com/tonyladd/fractureCases
+
+
+Notes:
+1) Once the solvers are compiled you can run the test cases in the run
+directory. "run" is an OF alias to change to the run directory
+2) You only need install the solvers and test cases that you need
+3) A similar procedure can be used to install Vitaliy's 3D code and
+related utilities, which use the same libraries:
+
+clone //https://github.com/vitst/dissolFoam
+

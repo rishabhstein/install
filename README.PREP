@@ -1,0 +1,12 @@
+To prepare the system (under CentOS 5/6):
+
+Make sure the following packages are present and up to date
+
+yum groupinstall 'Development Tools' 
+yum install git zlib-devel texinfo gstreamer-plugins-base-devel \
+libXext-devel libGLU-devel libXt-devel libXrender-devel libpng-devel \
+libXinerama-devel libXrandr-devel libXi-devel libXft-devel \
+libjpeg-turbo-devel libXcursor-devel \
+readline-devel ncurses-devel python python-devel
+
+You will need to be root for the recommended install

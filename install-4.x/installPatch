@@ -1,0 +1,49 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install patches'
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo Compiler settings: $FOAM_SETTINGS
+cd $WM_PROJECT_DIR
+
+# Allow system operations
+sed -i -e '/allowSystemOperations/s/0/1/' etc/controlDict
+
+# Fix readline with ncurses - Not needed in Centos 6
+#echo HACK for readline
+#sed -i -e 's/-lreadline/-lreadline -lncurses/' applications/utilities/mesh/manipulation/setSet/Allwmake
+
+# Fix Cmake version
+sed -i -e "s/for cmake in/for cmake in cmake-$CMAKEVER/g" etc/config.sh/paraview
+
+# Fix Make: remove -I/usr/include line from options file.
+sed -i '/I\/usr\/include/d' applications/utilities/mesh/generation/foamyMesh/foamyQuadMesh/Make/options
+
+# Fix CGAL config
+sed -i -e "s/cgal-system/CGAL-$CGALVER/g" etc/config.sh/CGAL
+sed -i -e "s/boost-system/boost_$BOOSTVER/g" etc/config.sh/CGAL
+
+cd $WM_THIRD_PARTY_DIR
+
+# Fix makeGcc
+sed -i -e 's/lib:$LD/lib$WM_COMPILER_LIB_ARCH:$LD/g' makeGcc
+
+# Fix CGAL config
+sed -i -e "s/:-boost-system/:-boost_$BOOSTVER/g" makeCGAL
+sed -i -e "s/:-gmp-system/:-gmp-$GMPVER/g" makeCGAL
+sed -i -e "s/:-mpfr-system/:-mpfr-$MPFRVER/g" makeCGAL
+
+# Fix QT config to compile xmlpatterns
+sed -i -e 's/--prefix=$prefixDIR/--prefix=$prefixDIR -xmlpatterns/' makeQt
+
+# Include Vitaliy's patches
+cd $PATCHDIR/dataDictPatch
+read -p "Apply dataDictPatch? (apply/unapp/none): " patch
+if [ "$patch" == "apply" ]; then applyPatch; fi
+if [ "$patch" == "unapp" ]; then unappPatch; fi
+
+
+echo 'Patches Installed'
+echo '------------------------'
