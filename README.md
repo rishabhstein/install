@@ -9,6 +9,8 @@ mkdir $HOME/OpenFOAM
 
 cd $HOME/OpenFOAM
 
+sudo yum install git
+
 git clone https://github.com/tonyladd/install
 
 Then follow the step-by-step instructions outlined in README
