@@ -9,7 +9,6 @@ mkdir $HOME/OpenFOAM
 
 cd $HOME/OpenFOAM
 
-clone //https://github.com/tonyladd/install
-
+git clone https://github.com/tonyladd/install
 
 Then follow the step-by-step instructions outlined in README

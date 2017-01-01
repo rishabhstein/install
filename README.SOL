@@ -6,14 +6,14 @@ cd solvers
 cp -rp $HOME/OpenFOAM/install/Allw* solvers
 
 
-clone //https://github.com/tonyladd/porousFoam
-clone //https://github.com/tonyladd/fractureFoam
+git clone https://github.com/tonyladd/porousFoam
+git clone https://github.com/tonyladd/fractureFoam
 Allwmake
 
 
 run
-clone //https://github.com/tonyladd/porousCases
-clone //https://github.com/tonyladd/fractureCases
+git clone https://github.com/tonyladd/porousCases
+git clone https://github.com/tonyladd/fractureCases
 
 
 Notes:
@@ -23,5 +23,5 @@ directory. "run" is an OF alias to change to the run directory
 3) A similar procedure can be used to install Vitaliy's 3D code and
 related utilities, which use the same libraries:
 
-clone //https://github.com/vitst/dissolFoam
+git clone https://github.com/vitst/dissolFoam
 

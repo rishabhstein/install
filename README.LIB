@@ -1,14 +1,13 @@
-To set up the libraries and utilities:
+To set up the libraries and utilities (as user):
 
 cd $HOME/OpenFOAM/$USER-$OFVER
 mkdir applications run
 cd applications
-clone //https://github.com/vitst/libsFoamAux
+git clone https://github.com/vitst/libsFoamAux
 
+
+$HOME/OpenFOAM/install/mkInclude
 cd libsFoamAux
-cp -p $HOME/OpenFOAM/install/mkInclude .
-mkInclude
 Allwmake
 
-Note:
-    Solvers and utilities are installed in parallel directories
+Note: Solvers and utilities are installed in parallel directories

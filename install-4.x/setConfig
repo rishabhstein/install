@@ -2,7 +2,7 @@
 # OpenFOAM configuration script
 
 # OpenFOAM and patch directories
-FOAM=OF4                                        # Installation dir
+FOAM=FOAM                                       # Installation dir
 INST=/global/usr/apps                           # Location
 PATCH=patches-OpenFOAM-4.x-unofficial           # Patch directory
 

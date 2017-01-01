@@ -9,4 +9,3 @@ libXinerama-devel libXrandr-devel libXi-devel libXft-devel \
 libjpeg-turbo-devel libXcursor-devel \
 readline-devel ncurses-devel python python-devel
 
-You will need to be root for the recommended install

@@ -1,6 +1,8 @@
-To install the OpenFOAM source (root is recommended): 
+To install the OpenFOAM source:
+
 1) cd to the install-4.x directory
 2) Edit lines 5 & 6 of setConfig to reflect the installation location
+3) su to root
 3) Start the installation with install and type yes to create the
 OpenFOAM directory and download the source files (4.x)
 4) Copy the patches directory (in install-4.x) to the installation dir
@@ -9,15 +11,18 @@ mins and 1 hour each.
 6) Check the log files for errors: " error" or " Error "
 Most errors are serious, even if the compilation completes
 
-Note:
-1) Make sure that the current directory is set: e.g.
+Notes:
+1) I typically install OpenFOAM as root in a system directory accessible
+to all users. This is not essential, but its easier to maintain a single
+copy of the OF source.
+2) Make sure that the current directory is set (for root): e.g.
 export PATH=.:$PATH
-2) The installation scripts reflect the information in the Wiki pages
+3) The installation scripts reflect the information in the Wiki pages
 for installing OF4 under RedHat based systems. Other OS are similar but
 can differ in some details
-3) installPatch installs the dataDict patch, which is needed by the
+4) installPatch installs the dataDict patch, which is needed by the
 steadyStateControl class. It has a restore option to reinstate the
 original version (select yes when prompted for a backup)
-4) installPatch also contains some specific hacks reflecting current
+5) installPatch also contains some specific hacks reflecting current
 issues with the install under CentOS 5/6: these may be changed in future
 
