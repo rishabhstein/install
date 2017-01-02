@@ -2,10 +2,10 @@ To set up the solvers directory:
 
 cd $HOME/OpenFOAM/$USER-$OFVER/applications/solvers
 mkdir solvers
-cd solvers
 cp -rp $HOME/OpenFOAM/install/Allw* solvers
 
 
+cd solvers
 git clone https://github.com/tonyladd/porousFoam
 git clone https://github.com/tonyladd/fractureFoam
 Allwmake
