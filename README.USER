@@ -10,7 +10,7 @@ source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc
 
 
 mkdir -p $HOME/OpenFOAM/$USER-$OFVER
-mkdir -p $HOME/.OpenFOAM-$OFVER
+mkdir -p $HOME/.OpenFOAM/$OFVER
 
 
 mv the install directory to $HOME/OpenFOAM

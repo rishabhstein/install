@@ -1,6 +1,6 @@
 To set up the solvers directory:
 
-cd $HOME/OpenFOAM/$USER-$OFVER/applications/solvers
+cd $HOME/OpenFOAM/$USER-$OFVER/applications
 mkdir solvers
 cp -rp $HOME/OpenFOAM/install/Allw* solvers
 
