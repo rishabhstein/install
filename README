@@ -15,7 +15,10 @@ libraries and solvers) and the run directory where cases are executed
 Note:
 1) We use yum-based linux systems and the installation is known to work
 on CentOS (v5/v6) and Scientific Linux (v7).
-2) However, this is the first version of this document and not all the
+2) The instructions were prepared for OF-4.x. There are new install
+scripts for v1706. Some of the instructions (and prefs.sh) must be
+modified for v1706 and later
+3) However, this is the first version of this document and not all the
 steps have been verified at this point. Please let me know if you have
 problems
 email: tladd@che.ufl.edu
