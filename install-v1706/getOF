@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Remove previous copy of OpenFOAM
+mkdir -p $FOAM_INST_DIR
+cd $FOAM_INST_DIR
+rm -rf OpenFOAM-$OFVER ThirdParty-$OFVER
+
+# Install fresh copy of OpenFOAM
+
+echo '------------------------'
+echo 'Install OpenFOAM sources'
+
+# Get OF source files from tarballs
+tar xzf $SOURCE/OpenFOAM-$OFVER.tgz
+tar xzf $SOURCE/ThirdParty-$OFVER.tgz
+

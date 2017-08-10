@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Clean installation'
+
+./installGcc                     # Compile gcc
+./installTools                   # Compile tool chain
+./installPView                   # Compile ParaView
+./installFoam                    # Compile OpenFOAM
+
+echo "All Done"
+exit 0

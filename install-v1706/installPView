@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo '------------------------'
+
+# Source OpenFOAM environment
+cd $WM_THIRD_PARTY_DIR
+source $WM_PROJECT_DIR/etc/bashrc $SETOF
+echo Compiler settings: $FOAM_SETTINGS
+
+# Compile Qt
+echo "Compiling qt-$QTVER"
+./makeQt qt-$QTVER > makeQt.log 2>&1
+
+# Set paths to qmake and flags
+QTPATH=platforms/$WM_ARCH$WM_COMPILER/qt-$QTVER/bin/qmake
+export PATH=platforms/$WM_ARCH$WM_COMPILER/qt-$QTVER/bin:$PATH
+PVOPT=PARAVIEW_INSTALL_THIRD_PARTY_LIBRARIES:BOOL=ON
+PLUS="-no-python -mpi"
+
+# Compile ParaView
+echo 'Compiling ParaView'
+./makeParaView -qmake $QTPATH $PVOPT $PLUS > makePView.log 2>&1
+
+echo 'ParaView installed'
+echo '------------------------'

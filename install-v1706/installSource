@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install sources'
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo OpenFOAM source in: $WM_PROJECT_DIR
+
+# Copy scripts to install tools
+cp getGcc getCmake getQt $WM_THIRD_PARTY_DIR
+
+# Get tools
+cd $WM_THIRD_PARTY_DIR
+./getGcc gmp-$GMPVER mpfr-$MPFRVER mpc-$MPCVER gcc-$GCCVER
+./getCmake cmake-$CMAKEVER
+./getQt $QTVER
+chown -R root *
+chgrp -R root *
+chmod 755 gcc-* gmp-* mpc-* mpfr-* cmake-*
+chmod 755 boost_* CGAL* fftw-* qt-* openmpi-*
+chmod 755 ParaView-* scotch_*
+
+echo 'Sources Installed'
+echo '------------------------'

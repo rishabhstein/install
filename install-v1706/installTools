@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install Tool chain'
+
+echo ThirdParty sources in: $WM_THIRD_PARTY_DIR
+cd $WM_THIRD_PARTY_DIR
+
+# Source OpenFOAM environment
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETOF
+echo Compiler settings: $FOAM_SETTINGS
+
+# Compile cmake
+echo "Compiling cmake-$CMAKEVER"
+./makeCmake cmake-$CMAKEVER > makeCmake.log 2>&1
+        
+# Reset environment to pick up cmake version
+source $WM_PROJECT_DIR/etc/bashrc $SETOF
+echo "Compiler settings: $FOAM_SETTINGS"
+
+# Compile ThirdParty tools
+echo "Compiling ThirdParty tools"
+echo "Add path to current autoconf"
+export PATH=/global/usr/bin:$PATH
+./Allwmake > ThirdParty.log 2>&1
+
+echo "Tools installed"
+echo '------------------------'
+

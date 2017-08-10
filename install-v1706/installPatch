@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo '------------------------'
+echo 'Install patches'
+
+# Source OpenFOAM environment
+echo Installation: $FOAM_INST_DIR
+source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETTP
+echo Compiler settings: $FOAM_SETTINGS
+cd $WM_PROJECT_DIR
+
+# Allow system operations
+sed -i -e '/allowSystemOperations/s/0/1/' etc/controlDict
+
+# Fix readline with ncurses - Not needed in Centos 6
+#echo HACK for readline
+#sed -i -e 's/-lreadline/-lreadline -lncurses/' applications/utilities/mesh/manipulation/setSet/Allwmake
+
+# Set floating-point libraries for gcc
+sed -i -e "s/gmp-system/gmp-$GMPVER/g" etc/config.sh/compiler
+sed -i -e "s/mpc-system/mpc-$MPCVER/g" etc/config.sh/compiler
+sed -i -e "s/mpfr-system/mpfr-$MPFRVER/g" etc/config.sh/compiler
+
+# Set cmake version for paraview
+sed -i -e "s/cmake-system/cmake-$CMAKEVER/g" etc/config.sh/paraview
+
+cd $WM_THIRD_PARTY_DIR
+
+echo 'Patches Installed'
+echo '------------------------'
