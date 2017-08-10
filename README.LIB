@@ -6,8 +6,8 @@ cd applications
 git clone https://github.com/vitst/libsFoamAux
 
 
-$HOME/OpenFOAM/install/mkInclude
 cd libsFoamAux
+mkInclude
 Allwmake
 
 Note: Solvers and utilities are installed in parallel directories
