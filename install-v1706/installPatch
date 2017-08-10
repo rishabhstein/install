@@ -13,8 +13,8 @@ cd $WM_PROJECT_DIR
 sed -i -e '/allowSystemOperations/s/0/1/' etc/controlDict
 
 # Fix readline with ncurses - Not needed in Centos 6
-#echo HACK for readline
-#sed -i -e 's/-lreadline/-lreadline -lncurses/' applications/utilities/mesh/manipulation/setSet/Allwmake
+echo HACK for readline
+sed -i -e 's/-lreadline/-lreadline -lncurses/' applications/utilities/mesh/manipulation/setSet/Allwmake
 
 # Set floating-point libraries for gcc
 sed -i -e "s/gmp-system/gmp-$GMPVER/g" etc/config.sh/compiler

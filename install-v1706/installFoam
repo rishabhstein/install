@@ -15,9 +15,11 @@ if [ "$OFDBG" == "Debug" ]; then
 fi
 source $FOAM_INST_DIR/OpenFOAM-$OFVER/etc/bashrc $SETOF
 export CMAKE_PREFIX_PATH=$WM_THIRD_PARTY_DIR/platforms/linux64$OFGCC/qt-$QTVER
+export PATH=$TOOLS:$PATH
 echo OpenFOAM source in: $WM_PROJECT_DIR
 echo Compiler settings: $FOAM_SETTINGS
 echo Qt-cmake path: $CMAKE_PREFIX_PATH
+echo Path to updated tools: $TOOLS
 
 # Installation
 cd $WM_PROJECT_DIR

@@ -19,9 +19,9 @@ source $WM_PROJECT_DIR/etc/bashrc $SETOF
 echo "Compiler settings: $FOAM_SETTINGS"
 
 # Compile ThirdParty tools
+export PATH=$TOOLS:$PATH
 echo "Compiling ThirdParty tools"
-echo "Add path to current autoconf"
-export PATH=/global/usr/bin:$PATH
+echo Path to updated tools: $TOOLS
 ./Allwmake > ThirdParty.log 2>&1
 
 echo "Tools installed"

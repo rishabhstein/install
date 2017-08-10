@@ -13,4 +13,8 @@ echo 'Install OpenFOAM sources'
 # Get OF source files from tarballs
 tar xzf $SOURCE/OpenFOAM-$OFVER.tgz
 tar xzf $SOURCE/ThirdParty-$OFVER.tgz
+chown -R root OpenFOAM-v1706/
+chown -R root ThirdParty-v1706/
+chgrp -R root OpenFOAM-v1706/
+chgrp -R root ThirdParty-v1706/
 

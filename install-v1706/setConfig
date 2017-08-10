@@ -3,8 +3,9 @@
 
 # OpenFOAM and patch directories
 export FOAM=OpenFOAM                             # Installation dir
-export INST=/global/usr/apps                     # Location
-export SOURCE=/global/usr/src                    # .tgz files
+export INST=/global/apps/f                       # Location
+export SOURCE=/globalfs/src                      # .tgz files
+export TOOLS=/global/local/bin                   # Path to recent tools
 
 # Set OpenFOAM environment variables
 export OFCC=ThirdParty
