@@ -15,9 +15,9 @@ git clone https://github.com/tonyladd/install
 
 Then follow the step-by-step instructions outlined in README:
 
-### Step by step installation:
+# Step by step installation:
 
-1. Install development tools first by using following command:
+## 1. Install development tools first by using following command:
 
       yum groupinstall 'Development Tools' 
       yum install git zlib-devel texinfo gstreamer-plugins-base-devel \
@@ -26,15 +26,19 @@ Then follow the step-by-step instructions outlined in README:
       libjpeg-turbo-devel libXcursor-devel \
       readline-devel ncurses-devel python python-devel
 
-2. Installation of OpenFOAM by following step:
-  ## First download the source
+## 2. Installation of OpenFOAM by following step:
+  ### First download the source
       cd $HOME
       mkdir OpenFOAM
       cd OpenFOAM
       git clone https://github.com/OpenFOAM/OpenFOAM-4.x.git
       git clone https://github.com/OpenFOAM/ThirdParty-4.x.git
-      
+  
+  ### We need some more additional package, the detail is given in install/install-4.x/setConfig
       cd ThirdParty-4.x
       mkdir download
+      
+     
+      
       
 
